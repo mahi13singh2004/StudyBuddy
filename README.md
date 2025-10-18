@@ -84,26 +84,38 @@ StudyBuddyAI/
 
 ---
 
-## 🧪 Local Development
-### 1️⃣ Clone the repository
-git clone https://github.com/your-username/studybuddy-ai.git
-cd studybuddy-ai
-
-### 2️⃣ Install dependencies
-
-Backend
-cd backend
-npm install
-
-Frontend
-cd ../frontend
-npm install
-
-
-### 3️⃣ Set up environment variables
-Create a `.env` file inside `backend/` with:
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-GEMINI_API_KEY=your_gemini
+### Installation
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-username/studybuddy-ai.git
+   ```
+2. Install backend dependencies:
+   ```bash
+   cd backend
+   npm install
+   ```
+3. Install frontend dependencies:
+   ```bash
+   cd ../frontend
+   npm install
+   ```
+4. Create `.env` files:
+   - In `backend/`, add:
+     ```
+     MONGODB_URI=your_mongodb_uri
+     JWT_SECRET=your_jwt_secret
+     GEMINI_API_KEY=your_gemini_api_key
+     ```
+5. Run the backend:
+   ```bash
+   cd backend
+   npm run dev
+   ```
+7. Run the frontend:
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+---
 
 
