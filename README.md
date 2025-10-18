@@ -117,4 +117,16 @@ StudyBuddyAI/
    ```
 ---
 
+## 🧑‍💻 Author
+**Mahi Singh**  
+🎓 Pre-final year @ Visvesvaraya Technological University  
+
+---
+
+## 🤝 Contributions
+Pull requests are welcome — just like healthy habits!  
+If you’d like to add a feature, open an issue first to discuss it.
+
+---
+
 
