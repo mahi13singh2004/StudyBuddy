@@ -55,14 +55,6 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 
 ---
 
-## 🚧 **Upcoming / Planned Features**  
-- 📅 **Smart Study Planner** (AI-based daily schedule generation 🪄)  
-- 👥 Collaborative folders and shared study groups  
-- 📊 Analytics Dashboard for progress tracking  
-- 🎓 Gamified learning streaks & badges
-
----
-
 ## 🔐 **Authentication & Security**  
 - Secure JWT-based login system  
 - Role-based access ready for future teacher/student expansions  
@@ -71,4 +63,45 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 ---
 
 ## 📁 **Project Structure**  
+StudyBuddyAI/
+├── backend/
+│ ├── controllers/
+│ ├── models/
+│ ├── routes/
+│ ├── utils/
+│ └── index.js
+│
+├── frontend/
+│ ├── src/
+│ │ ├── pages/
+│ │ ├── components/
+│ │ ├── store/
+│ │ └── App.jsx
+│
+└── README.md
+
+---
+
+## 🧪 Local Development
+### 1️⃣ Clone the repository
+git clone https://github.com/your-username/studybuddy-ai.git
+cd studybuddy-ai
+
+### 2️⃣ Install dependencies
+
+Backend
+cd backend
+npm install
+
+Frontend
+cd ../frontend
+npm install
+
+
+### 3️⃣ Set up environment variables
+Create a `.env` file inside `backend/` with:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+GEMINI_API_KEY=your_gemini
+
 
