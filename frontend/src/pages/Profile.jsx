@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../utils/axios.js";
 import { useAuthStore } from "../store/auth.store.js";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import Spinner from "../components/Spinner.jsx";
 
 const ProfilePage = () => {
     const [stats, setStats] = useState(null);
@@ -27,7 +28,7 @@ const ProfilePage = () => {
         return (
             <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center pt-16">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-blue-500 mx-auto mb-3 sm:mb-4"></div>
+                    <Spinner size="lg" color="blue" className="mx-auto mb-3 sm:mb-4" />
                     <p className="text-slate-300 text-sm sm:text-base">Loading your profile...</p>
                 </div>
             </div>

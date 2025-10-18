@@ -85,22 +85,22 @@ const Navbar = () => {
                                     </button>
 
                                     {isDropdownOpen && (
-                                        <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-[70] animate-in slide-in-from-top-2 duration-200">
-                                            <div className="px-4 py-2 border-b border-gray-100">
-                                                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Study Features</h3>
+                                        <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-slate-800/95 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-600 py-2 z-[70] animate-in slide-in-from-top-2 duration-200">
+                                            <div className="px-4 py-2 border-b border-slate-600">
+                                                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">Study Features</h3>
                                             </div>
                                             {features.map((feature, index) => (
                                                 <Link
                                                     key={index}
                                                     to={feature.link}
                                                     onClick={() => setIsDropdownOpen(false)}
-                                                    className={`block px-4 py-3 text-gray-700 transition-colors duration-150 ${feature.color}`}
+                                                    className="block px-4 py-3 text-slate-200 hover:bg-slate-700/50 transition-colors duration-150"
                                                 >
                                                     <div className="flex items-center space-x-3">
                                                         <span className="text-2xl">{feature.icon}</span>
                                                         <div>
-                                                            <div className="font-medium text-gray-900">{feature.title}</div>
-                                                            <div className="text-sm text-gray-500">{feature.description}</div>
+                                                            <div className="font-medium text-white">{feature.title}</div>
+                                                            <div className="text-sm text-slate-400">{feature.description}</div>
                                                         </div>
                                                     </div>
                                                 </Link>

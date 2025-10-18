@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFolderStore } from "../store/folder.store.js";
+import Spinner from "./Spinner.jsx";
 
 const FolderSidebar = ({ onSelectFolder, onDropNote, activeFolderId }) => {
   const { folders, fetchFolders, createFolder, deleteFolder, loading } = useFolderStore();
@@ -34,7 +35,10 @@ const FolderSidebar = ({ onSelectFolder, onDropNote, activeFolderId }) => {
       </form>
 
       {loading ? (
-        <p className="text-neutral-400 text-xs sm:text-sm">Loading folders...</p>
+        <div className="flex items-center space-x-2 text-neutral-400 text-xs sm:text-sm">
+          <Spinner size="sm" color="slate" />
+          <span>Loading folders...</span>
+        </div>
       ) : (
         <ul className="space-y-1 overflow-y-auto">
           <li

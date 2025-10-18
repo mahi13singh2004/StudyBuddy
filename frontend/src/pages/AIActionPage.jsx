@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAIStore } from "../store/ai.store";
 import axiosInstance from "../utils/axios.js";
 import FlashcardGrid from "../components/Flashcard.jsx";
+import Spinner from "../components/Spinner.jsx";
 
 const AIActionPage = () => {
     const [folders, setFolders] = useState([]);
@@ -255,7 +256,7 @@ const AIActionPage = () => {
                         {loading && (
                             <div className="flex items-center justify-center py-8 sm:py-12">
                                 <div className="text-center">
-                                    <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-purple-500 mx-auto mb-3 sm:mb-4"></div>
+                                    <Spinner size="lg" color="purple" className="mx-auto mb-3 sm:mb-4" />
                                     <p className="text-slate-300 text-base sm:text-lg">⏳ Processing your request...</p>
                                     <p className="text-slate-500 text-xs sm:text-sm mt-2">This may take a few moments</p>
                                 </div>

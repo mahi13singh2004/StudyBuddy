@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import { useNoteStore } from "../store/note.store.js";
 import FolderSidebar from "../components/FolderSidebar.jsx";
+import Spinner from "./Spinner.jsx";
 
 const NotesPage = () => {
   const { notes, fetchNotes, createNote, updateNote, deleteNote, loading } = useNoteStore();
@@ -172,7 +173,7 @@ const NotesPage = () => {
           {loading ? (
             <div className="flex items-center justify-center py-8 sm:py-12">
               <div className="text-center">
-                <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-blue-500 mx-auto mb-3 sm:mb-4"></div>
+                <Spinner size="lg" color="blue" className="mx-auto mb-3 sm:mb-4" />
                 <p className="text-slate-300 text-sm sm:text-base">Loading notes...</p>
               </div>
             </div>

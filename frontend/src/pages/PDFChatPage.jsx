@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { usePDFChatStore } from "../store/pdf.store.js";
+import Spinner from "../components/Spinner.jsx";
 
 const PDFChatPage = () => {
   const {
@@ -116,7 +117,7 @@ const PDFChatPage = () => {
               ))}
               {loading && (
                 <div className="flex items-center space-x-2 text-slate-400">
-                  <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-green-500"></div>
+                  <Spinner size="sm" color="green" />
                   <span className="text-sm sm:text-base">AI is typing...</span>
                 </div>
               )}
