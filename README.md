@@ -63,6 +63,7 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 ---
 
 ## 📁 **Project Structure**  
+```
 StudyBuddyAI/
 ├── backend/
 │ ├── controllers/
@@ -79,6 +80,7 @@ StudyBuddyAI/
 │ │ └── App.jsx
 │
 └── README.md
+```
 
 ---
 
