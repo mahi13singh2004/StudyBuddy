@@ -1,0 +1,44 @@
+import PDF from "../models/PDF.js";
+import path from "path";
+import fs from "fs";
+import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+
+export const uploadPDF = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    if (!req.file) return res.status(400).json({ message: "PDF file is required" });
+
+    const filePath = req.file.path;
+    const title = req.file.originalname;
+
+    // 1️⃣ Load PDF with LangChain
+    const loader = new PDFLoader(filePath);
+    const docs = await loader.load(); // returns array of documents
+
+    // 2️⃣ Split into chunks (efficient for large PDFs)
+    const splitter = new RecursiveCharacterTextSplitter({
+      chunkSize: 2000,
+      chunkOverlap: 200,
+    });
+
+    const chunks = await splitter.splitDocuments(docs); // each chunk has .pageContent
+
+    // 3️⃣ Combine all chunks into single text
+    const combinedText = chunks.map(c => c.pageContent).join("\n\n");
+
+    // 4️⃣ Save PDF metadata + text in DB
+    const pdf = await PDF.create({
+      user: userId,
+      title,
+      fileUrl: filePath,
+      textContent: combinedText,
+    });
+
+    res.status(201).json({ pdfId: pdf._id, title: pdf.title });
+  } catch (err) {
+    console.error("PDF Upload Error:", err);
+    res.status(500).json({ message: "Failed to upload PDF" });
+  }
+};
