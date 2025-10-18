@@ -15,6 +15,7 @@ const Home = () => {
       <p>Welcome,{user.name}</p>
       <p>Welcome,{user.email}</p>
       <Link to="/notes">Notes Page</Link>
+      <Link to="/ai">AI Page</Link>
       <button onClick={handleLogout}>Logout</button>
     </div>
   )

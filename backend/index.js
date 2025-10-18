@@ -4,8 +4,9 @@ import cookieParser from "cookie-parser";
 import connectDB from "./db/connectDB.js";
 import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
-import noteRoutes from "./routes/note.route.js"
-import folderRoutes from "./routes/folder.route.js"
+import noteRoutes from "./routes/note.route.js";
+import folderRoutes from "./routes/folder.route.js";
+import aiRoutes from "./routes/ai.route.js";
 dotenv.config();
 
 const app = express();
@@ -19,8 +20,9 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
-app.use("/api/notes",noteRoutes)
-app.use("/api/folders",folderRoutes)
+app.use("/api/notes", noteRoutes);
+app.use("/api/folders", folderRoutes);
+app.use("/api/ai", aiRoutes);
 
 const PORT = process.env.PORT || 5000;
 
