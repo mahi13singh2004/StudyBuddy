@@ -99,8 +99,7 @@ StudyBuddyAI/
    cd ../frontend
    npm install
    ```
-4. Create `.env` files:
-   In `backend/`, add:
+4. Create `.env` file:
    ```
    MONGODB_URI=your_mongodb_uri
    JWT_SECRET=your_jwt_secret
