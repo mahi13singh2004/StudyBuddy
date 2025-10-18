@@ -43,7 +43,7 @@ const Home = () => {
     { number: "100%", label: "AI Powered", icon: "🤖" },
     { number: "24/7", label: "Available", icon: "⏰" },
     { number: "∞", label: "Possibilities", icon: "🚀" },
-    { number: "1000+", label: "Students", icon: "👥" }
+    { number: "50+", label: "Students", icon: "👥" }
   ]
 
   return (

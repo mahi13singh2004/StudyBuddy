@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route } from "react-router-dom"
 import Signup from './pages/Signup.jsx'
 import Login from './pages/Login.jsx'
@@ -11,11 +11,24 @@ import AIActionPage from './pages/AIActionPage.jsx'
 import PDFChatPage from './pages/PDFChatPage.jsx'
 import Profile from './pages/Profile.jsx'
 import Navbar from './components/Navbar.jsx'
+import LoadingScreen from './components/LoadingScreen.jsx'
+
 const App = () => {
   const { checkAuth } = useAuthStore()
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
+
   useEffect(() => {
     checkAuth()
   }, [checkAuth])
+
+  const handleLoadingComplete = () => {
+    setIsInitialLoading(false)
+  }
+
+  if (isInitialLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+  }
+
   return (
     <>
       <Navbar />
