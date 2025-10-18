@@ -64,13 +64,11 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 
 # SnapShots
 ![Image](https://drive.google.com/uc?export=view&id=1aK-IT8EISlOz7akh_j8a_vpRgwK_XNyS)
-![Image](https://drive.google.com/uc?export=view&id=1zd_N7VXubC2egrGEW1av_gopiNMYPJUv)
-![Image](https://drive.google.com/uc?export=view&id=1dBk9M5nMC8SKz5oAmjo0_DHge3ZbPq_a)
-![Image](https://drive.google.com/uc?export=view&id=1WI5Rnhv1doJgL2W3VmK0VZ-3C3jdTeg7)
-![Image](https://drive.google.com/uc?export=view&id=1XCIiQ5mo5-fjHQJuE__8WXsgPqAy0BNj)
-![Image](https://drive.google.com/uc?export=view&id=1S0LIK2_ouTdminePJdGU_hR2tnyofYes)
-![Image](https://drive.google.com/uc?export=view&id=19UPWDicqKUNe1lg4YTtVW7_VOoaF9drF)
-![Image](https://drive.google.com/uc?export=view&id=16WTLRo52qOeeQh620V4p7cP0IeWONYa2)
+![Image](https://drive.google.com/uc?export=view&id=1GlmEB3tzpiiM41Xxy_EZI8DTpMn4rqqp)
+![Image](https://drive.google.com/uc?export=view&id=1MPWQeogbecz4b2nzcyBbOJp_Lu7s2t9S)
+![Image](https://drive.google.com/uc?export=view&id=1w4k3R09zTzBEryryIFWuTcDordVXOEbZ)
+![Image](https://drive.google.com/uc?export=view&id=1YWS0eVN0mvxjCcT5WRUjDPmulbz0z9Mk)
+![Image](https://drive.google.com/uc?export=view&id=1paDT1HT5pcTLRCpSzmzuDTVraBW6pbnY)
 
 ---
 
