@@ -55,6 +55,14 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 
 ---
 
+### 👥 **5. Real-Time Collaborative AI Study Rooms**  
+- Create or join study rooms with unique 6-character codes (e.g., ABC123) 🏠  
+- Real-time chat with multiple students using Socket.io for instant collaboration  
+- AI tutor integration — type "@ai" or "ai help" to get instant study assistance from Gemini API  
+- Live participant tracking and persistent message history for seamless group study sessions
+
+---
+
 ## 🔐 **Authentication & Security**  
 - Secure JWT-based login system  
 - Role-based access ready for future teacher/student expansions  
