@@ -32,6 +32,13 @@ const Navbar = () => {
             color: "hover:bg-green-50 hover:text-green-600"
         },
         {
+            icon: "👥",
+            title: "Study Rooms",
+            description: "Collaborate with AI assistance",
+            link: "/study-rooms",
+            color: "hover:bg-indigo-50 hover:text-indigo-600"
+        },
+        {
             icon: "📊",
             title: "Analytics",
             description: "Track your study progress",

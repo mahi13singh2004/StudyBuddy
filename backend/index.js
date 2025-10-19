@@ -5,12 +5,16 @@ import connectDB from "./db/connectDB.js";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
+import { createServer } from "http";
+import { Server } from "socket.io";
 import authRoutes from "./routes/auth.route.js";
 import noteRoutes from "./routes/note.route.js";
 import folderRoutes from "./routes/folder.route.js";
 import aiRoutes from "./routes/ai.route.js";
 import pdfRoutes from "./routes/pdf.route.js";
-import statRoutes from "./routes/stat.route.js"
+import statRoutes from "./routes/stat.route.js";
+import studyRoomRoutes from "./routes/studyRoom.route.js";
+import { handleSocketConnection } from "./socket/socketHandler.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,11 +22,19 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
+const server = createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com"],
+    credentials: true,
+  }
+});
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://studybuddy-frontend-9meh.onrender.com",
+    origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com"],
     credentials: true,
   })
 );
@@ -34,10 +46,15 @@ app.use("/api/notes", noteRoutes);
 app.use("/api/folders", folderRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/pdfs", pdfRoutes);
-app.use("/api/stats",statRoutes)
+app.use("/api/stats", statRoutes);
+app.use("/api/study-rooms", studyRoomRoutes);
+
+// Socket.io connection handling
+handleSocketConnection(io);
+
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.log(`Server is running on port ${PORT}`);
 });
