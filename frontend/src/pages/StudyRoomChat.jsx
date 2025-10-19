@@ -23,7 +23,7 @@ const StudyRoomChat = () => {
         }
 
         // Initialize socket connection
-        const newSocket = io(import.meta.env.VITE_API_URL || 'http://localhost:5000', {
+        const newSocket = io('https://studybuddy-bz2d.onrender.com', {
             withCredentials: true
         });
 
