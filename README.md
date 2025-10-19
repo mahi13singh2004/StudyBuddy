@@ -10,16 +10,19 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 ### 🖥️ Frontend  
 - React + Tailwind CSS  
 - Zustand (State Management)  
+- Socket.io-client (Real-time communication)
 
 ### 🧠 Backend  
 - Node.js + Express  
 - MongoDB (Mongoose)  
 - LangChain + Gemini API (AI Engine)  
+- Socket.io (WebSocket server for real-time features)
 
 ### 🌐 Others  
 - JWT Authentication  
 - Multer for file uploads  
 - PDF parsing + LangChain for chunking and querying  
+- Real-time messaging with WebSocket protocol  
 
 ---
 
