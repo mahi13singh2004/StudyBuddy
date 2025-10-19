@@ -15,7 +15,6 @@ const protectRoute=async(req,res,next)=>{
         next()
     } 
     catch (error) {
-        console.log("Error in verify Token backend")
         return res.status(500).json({"message":"Internal Server Error"})    
     }
 }

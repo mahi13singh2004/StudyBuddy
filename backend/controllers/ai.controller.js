@@ -34,7 +34,6 @@ export const handleAIAction = async (req, res) => {
     
     return res.status(200).json({ success: true, result });
   } catch (error) {
-    console.log("Error in handleAIAction", error);
     return res
       .status(500)
       .json({ success: false, message: "Internal Server Error" });

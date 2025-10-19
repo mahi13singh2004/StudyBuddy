@@ -5,13 +5,13 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const handleSocketConnection = (io) => {
     io.on('connection', (socket) => {
-        console.log('User connected:', socket.id);
+       
 
         // Join a study room
         socket.on('join-room', async (data) => {
             const { roomId, userId, username } = data;
 
-            console.log('Join room data:', { roomId, userId, username });
+            
 
             try {
                 const room = await StudyRoom.findOne({ roomId, isActive: true });
@@ -32,7 +32,7 @@ export const handleSocketConnection = (io) => {
                     message: `${username} joined the study room`
                 });
 
-                console.log(`${username} joined room ${roomId}`);
+              
             } catch (error) {
                 console.error('Error joining room:', error);
                 socket.emit('error', { message: 'Failed to join room' });
@@ -43,7 +43,7 @@ export const handleSocketConnection = (io) => {
         socket.on('send-message', async (data) => {
             const { roomId, message, userId, username } = data;
 
-            console.log('Send message data:', { roomId, message, userId, username });
+            
 
             if (!username) {
                 socket.emit('error', { message: 'Username is required' });
@@ -75,13 +75,12 @@ export const handleSocketConnection = (io) => {
                 // Check if message is asking AI for help
                 const messageText = message.toLowerCase();
                 if (messageText.includes('@ai') || messageText.includes('ai help') || messageText.startsWith('ai ')) {
-                    console.log('AI help triggered for message:', message);
+               
                     setTimeout(async () => {
                         try {
-                            console.log('Generating AI response...');
+                            
                             const aiResponse = await generateAIResponse(message, room.messages);
-                            console.log('AI response generated:', aiResponse);
-
+                            
                             const aiMessage = {
                                 userId: 'ai-tutor',
                                 username: 'AI Tutor',
@@ -94,7 +93,7 @@ export const handleSocketConnection = (io) => {
                             await room.save();
 
                             io.to(roomId).emit('new-message', aiMessage);
-                            console.log('AI message sent to room:', roomId);
+                            
                         } catch (error) {
                             console.error('AI response error:', error);
                             // Send error message to user
@@ -133,14 +132,14 @@ export const handleSocketConnection = (io) => {
                     message: `${socket.username} disconnected`
                 });
             }
-            console.log('User disconnected:', socket.id);
+            
         });
     });
 };
 
 const generateAIResponse = async (userMessage, chatHistory) => {
     try {
-        console.log('Gemini API Key exists:', !!process.env.GEMINI_API_KEY);
+       
 
         // Simple test response first
         if (userMessage.toLowerCase().includes('test')) {
@@ -172,7 +171,7 @@ Response:`;
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const responseText = response.text();
-        console.log('Gemini response:', responseText);
+       
         return responseText;
     } catch (error) {
         console.error('AI generation error:', error);

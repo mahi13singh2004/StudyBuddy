@@ -53,7 +53,6 @@ export const joinRoom = async (req, res) => {
             return res.status(404).json({ error: "Room not found or inactive" });
         }
 
-        // Check if user is already in the room
         const existingParticipant = room.participants.find(
             p => p.userId.toString() === userId.toString()
         );
@@ -71,12 +70,12 @@ export const joinRoom = async (req, res) => {
             });
         }
 
-        // Check room capacity
+   
         if (room.participants.length >= room.maxParticipants) {
             return res.status(400).json({ error: "Room is full" });
         }
 
-        // Add user to room
+    
         room.participants.push({
             userId,
             username,

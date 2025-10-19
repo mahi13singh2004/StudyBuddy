@@ -22,26 +22,22 @@ const StudyRoomChat = () => {
             return;
         }
 
-        // Initialize socket connection
         const newSocket = io('https://studybuddy-bz2d.onrender.com', {
             withCredentials: true
         });
 
         setSocket(newSocket);
 
-        // Join the room
         newSocket.emit('join-room', {
             roomId,
             userId: user._id,
             username: user.name || user.email || 'Anonymous'
         });
 
-        // Listen for messages
         newSocket.on('new-message', (message) => {
             setMessages(prev => [...prev, message]);
         });
 
-        // Listen for user events
         newSocket.on('user-joined', (data) => {
             setMessages(prev => [...prev, {
                 _id: Date.now(),
@@ -69,7 +65,6 @@ const StudyRoomChat = () => {
             alert(error.message);
         });
 
-        // Fetch room details
         fetchRoomDetails();
 
         return () => {

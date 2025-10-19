@@ -49,7 +49,6 @@ app.use("/api/pdfs", pdfRoutes);
 app.use("/api/stats", statRoutes);
 app.use("/api/study-rooms", studyRoomRoutes);
 
-// Socket.io connection handling
 handleSocketConnection(io);
 
 const PORT = process.env.PORT || 5000;
