@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
@@ -36,6 +35,14 @@ const Home = () => {
       link: "/profile",
       color: "from-orange-500 to-orange-600",
       benefits: ["Study stats", "Progress tracking", "Achievements"]
+    },
+    {
+      icon: "👥",
+      title: "Study Rooms",
+      description: "Join collaborative study sessions with real-time chat and AI tutor assistance",
+      link: "/study-rooms",
+      color: "from-indigo-500 to-indigo-600",
+      benefits: ["Real-time chat", "AI tutor help", "Group study"]
     }
   ]
 
