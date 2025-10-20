@@ -1,7 +1,30 @@
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../store/auth.store';
+import Spinner from '../components/Spinner';
 import logo from '../assets/logo.png';
 
 const Home = () => {
+  const { loading } = useAuthStore();
+
+  // Show loading spinner during initial authentication check
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="flex items-center justify-center mb-6">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
+              <span className="text-white font-bold text-2xl">SB</span>
+            </div>
+            <h1 className="text-4xl font-bold text-white">
+              Study<span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">Buddy</span>
+            </h1>
+          </div>
+          <Spinner size="lg" color="blue" className="mx-auto mb-4" />
+          <p className="text-slate-300 text-lg">Loading your study dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
   const features = [
     {

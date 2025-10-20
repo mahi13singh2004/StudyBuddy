@@ -75,7 +75,7 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 
 # SnapShots
 ![Image](https://drive.google.com/uc?export=view&id=1aK-IT8EISlOz7akh_j8a_vpRgwK_XNyS)
-![Image](https://drive.google.com/uc?export=view&id=1GlmEB3tzpiiM41Xxy_EZI8DTpMn4rqqp)
+![Image](https://drive.google.com/uc?export=view&id=1XqrtEad3ldsp9xdKIaypXBQIHRZgVJ2Q)
 ![Image](https://drive.google.com/uc?export=view&id=1MPWQeogbecz4b2nzcyBbOJp_Lu7s2t9S)
 ![Image](https://drive.google.com/uc?export=view&id=1w4k3R09zTzBEryryIFWuTcDordVXOEbZ)
 ![Image](https://drive.google.com/uc?export=view&id=1YWS0eVN0mvxjCcT5WRUjDPmulbz0z9Mk)
