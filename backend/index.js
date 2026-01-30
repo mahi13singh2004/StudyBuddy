@@ -41,6 +41,15 @@ app.use(
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// Health check endpoint for wake-up
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Server is awake",
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/folders", folderRoutes);
