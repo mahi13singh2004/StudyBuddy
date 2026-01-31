@@ -84,61 +84,6 @@ A full-stack AI-powered productivity app built with ❤️ using the **MERN stac
 
 ---
 
-## 📁 **Project Structure**  
-```
-StudyBuddyAI/
-├── backend/
-│ ├── controllers/
-│ ├── models/
-│ ├── routes/
-│ ├── utils/
-│ └── index.js
-│
-├── frontend/
-│ ├── src/
-│ │ ├── pages/
-│ │ ├── components/
-│ │ ├── store/
-│ │ └── App.jsx
-│
-└── README.md
-```
-
----
-
-### Installation
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/studybuddy-ai.git
-   ```
-2. Install backend dependencies:
-   ```bash
-   cd backend
-   npm install
-   ```
-3. Install frontend dependencies:
-   ```bash
-   cd ../frontend
-   npm install
-   ```
-4. Create `.env` file:
-   ```
-   MONGODB_URI=your_mongodb_uri
-   JWT_SECRET=your_jwt_secret
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
-5. Run the backend:
-   ```bash
-   cd backend
-   npm run dev
-   ```
-7. Run the frontend:
-   ```bash
-   cd frontend
-   npm run dev
-   ```
----
-
 ## 🧑‍💻 Author
 **Mahi Singh**  
 🎓 Pre-final year @ Visvesvaraya Technological University  
@@ -150,5 +95,3 @@ Pull requests are welcome — just like healthy habits!
 If you’d like to add a feature, open an issue first to discuss it.
 
 ---
-
-
