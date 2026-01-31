@@ -10,7 +10,7 @@ export const useAuthStore = create((set) => ({
 
   signup: async (data) => {
     try {
-      set({ loading: true });
+      set({ loading: true, err: null });
       const res = await axiosInstance.post("/api/auth/signup", data);
       set({ user: res.data.user });
       return true;
@@ -24,7 +24,7 @@ export const useAuthStore = create((set) => ({
 
   login: async (data) => {
     try {
-      set({ loading: true });
+      set({ loading: true, err: null });
       const res = await axiosInstance.post("/api/auth/login", data);
       set({ user: res.data.user });
       return true;
