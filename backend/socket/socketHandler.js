@@ -146,9 +146,8 @@ const generateAIResponse = async (userMessage, chatHistory) => {
             return "Hello! I'm your AI tutor and I'm working perfectly! 🤖 How can I help you study today?";
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-        // Create context from recent chat history
         const recentMessages = chatHistory.slice(-10).map(msg =>
             `${msg.username}: ${msg.message}`
         ).join('\n');
