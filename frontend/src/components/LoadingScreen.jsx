@@ -24,16 +24,15 @@ const LoadingScreen = ({ onLoadingComplete }) => {
                 setStatus(`Waking up server${dots}`);
                 setProgress((attempts / maxAttempts) * 100);
 
-                // Try to ping the backend with health check first
+    
                 let response;
                 try {
                     response = await axiosInstance.get('/api/health', {
-                        timeout: 5000 // 5 second timeout for health check
+                        timeout: 5000 
                     });
                 } catch (healthError) {
-                    // If health check fails, try auth check
                     response = await axiosInstance.get('/api/auth/checkAuth', {
-                        timeout: 8000 // 8 second timeout
+                        timeout: 8000 
                     });
                 }
 
