@@ -101,7 +101,7 @@ const Login = () => {
                     <div className="w-full border-t border-neutral-700"></div>
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-neutral-900/50 text-neutral-400">recruiter Login</span>
+                    <span className="px-2 bg-neutral-900/50 text-neutral-400">Demo Account</span>
                   </div>
                 </div>
 
@@ -113,7 +113,7 @@ const Login = () => {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                   </svg>
-                  <span>Sign In As Recruiter</span>
+                  <span>Try As Recruiter</span>
                 </button>
               </div>
             </form>
