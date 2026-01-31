@@ -21,6 +21,13 @@ const Login = () => {
     }
   };
 
+  const handleDemoLogin = () => {
+    setForm({
+      email: "demo@studybuddy.com",
+      password: "demo123456"
+    });
+  };
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-white relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
@@ -87,6 +94,29 @@ const Login = () => {
                 <span className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_120%,rgba(255,255,255,0.25),rgba(255,255,255,0)40%),radial-gradient(circle_at_90%_-10%,rgba(255,255,255,0.25),rgba(255,255,255,0)40%)] opacity-0 transition group-hover:opacity-100" />
                 {loading ? "Authenticating…" : "Login"}
               </button>
+
+              {/* Demo Account Section */}
+              <div className="mt-4">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-neutral-700"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-neutral-900/50 text-neutral-400">Demo Account</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleDemoLogin}
+                  className="w-full mt-3 py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all duration-200 shadow-lg shadow-blue-500/20 text-sm flex items-center justify-center space-x-2"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  </svg>
+                  <span>Try Demo Account</span>
+                </button>
+              </div>
             </form>
 
             <p className="mt-6 text-center text-sm text-neutral-400">
