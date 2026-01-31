@@ -10,7 +10,6 @@ const Flashcard = ({ question, answer, index }) => {
             onMouseLeave={() => setIsFlipped(false)}
         >
             <div className={`flashcard-inner transform-style-preserve-3d transition-transform duration-700 ${isFlipped ? 'rotate-y-180' : ''}`}>
-                {/* Front Side - Question */}
                 <div className="flashcard-front absolute inset-0 backface-hidden bg-gradient-to-br from-blue-600 to-purple-700 rounded-xl p-4 flex flex-col justify-between items-center text-center shadow-xl overflow-hidden">
                     <div className="text-blue-200 text-xs font-semibold mb-2">Question #{index + 1}</div>
                     <div className="text-white text-sm font-medium leading-relaxed flex-1 flex items-center justify-center px-2">

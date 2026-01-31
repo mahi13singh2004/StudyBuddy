@@ -102,9 +102,9 @@ const AIActionPage = () => {
             return questions
                 .map(q => {
                     let clean = q.replace(/^(okay|here are|based on|exam-style|along with).*?[:\s]*/i, '');
-                    clean = clean.replace(/^\d+\.\s*/, ''); // Remove leading numbers
-                    clean = clean.replace(/^\*\*.*?\*\*\s*/, ''); // Remove bold formatting
-                    clean = clean.replace(/^Question\s*\d*[:\s]*/, ''); // Remove "Question 1:" prefix
+                    clean = clean.replace(/^\d+\.\s*/, '');
+                    clean = clean.replace(/^\*\*.*?\*\*\s*/, '');
+                    clean = clean.replace(/^Question\s*\d*[:\s]*/, '');
                     return clean.trim();
                 })
                 .filter(q => q.length > 10 &&
@@ -118,7 +118,6 @@ const AIActionPage = () => {
             return items.map((item) => {
                 let cleanText = item.replace(/^\d+\.\s*/, '').trim();
 
-                // Skip if it's too short or contains meta text
                 if (cleanText.length < 20 ||
                     cleanText.toLowerCase().includes('here are') ||
                     cleanText.toLowerCase().includes('exam-style') ||

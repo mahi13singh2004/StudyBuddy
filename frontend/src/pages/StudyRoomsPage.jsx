@@ -74,7 +74,6 @@ const StudyRoomsPage = () => {
                     <p className="text-slate-300">Join collaborative study sessions with AI assistance</p>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="grid md:grid-cols-2 gap-4 mb-8">
                     <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-slate-700">
                         <h3 className="text-lg font-semibold mb-4 text-white">Create New Room</h3>

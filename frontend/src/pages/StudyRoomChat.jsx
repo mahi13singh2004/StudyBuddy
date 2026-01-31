@@ -131,7 +131,6 @@ const StudyRoomChat = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
-            {/* Header */}
             <div className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 px-6 py-4">
                 <div className="flex justify-between items-center">
                     <div>
@@ -148,7 +147,6 @@ const StudyRoomChat = () => {
             </div>
 
             <div className="flex h-[calc(100vh-80px)]">
-                {/* Participants Sidebar */}
                 <div className="w-64 bg-slate-800/50 backdrop-blur-sm border-r border-slate-700 p-4">
                     <h3 className="font-semibold mb-4 text-white">Participants ({participants.length})</h3>
                     <div className="space-y-2">
@@ -173,9 +171,7 @@ const StudyRoomChat = () => {
                     </div>
                 </div>
 
-                {/* Chat Area */}
                 <div className="flex-1 flex flex-col">
-                    {/* Messages */}
                     <div className="flex-1 overflow-y-auto p-4 space-y-4">
                         {messages.map((message, index) => (
                             <div key={message._id || index} className={`flex ${message.isSystem ? 'justify-center' :
@@ -200,7 +196,6 @@ const StudyRoomChat = () => {
                         <div ref={messagesEndRef} />
                     </div>
 
-                    {/* Message Input */}
                     <div className="border-t border-slate-700 bg-slate-800/50 backdrop-blur-sm p-4">
                         <div className="flex space-x-2">
                             <textarea

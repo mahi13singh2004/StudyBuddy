@@ -5,13 +5,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export const handleSocketConnection = (io) => {
     io.on('connection', (socket) => {
-       
-
-        // Join a study room
         socket.on('join-room', async (data) => {
             const { roomId, userId, username } = data;
-
-            
 
             try {
                 const room = await StudyRoom.findOne({ roomId, isActive: true });
@@ -25,25 +20,19 @@ export const handleSocketConnection = (io) => {
                 socket.username = username;
                 socket.roomId = roomId;
 
-                // Notify others that user joined
                 socket.to(roomId).emit('user-joined', {
                     userId,
                     username,
                     message: `${username} joined the study room`
                 });
-
-              
             } catch (error) {
                 console.error('Error joining room:', error);
                 socket.emit('error', { message: 'Failed to join room' });
             }
         });
 
-        // Handle chat messages
         socket.on('send-message', async (data) => {
             const { roomId, message, userId, username } = data;
-
-            
 
             if (!username) {
                 socket.emit('error', { message: 'Username is required' });
@@ -57,7 +46,6 @@ export const handleSocketConnection = (io) => {
                     return;
                 }
 
-                // Save message to database
                 const newMessage = {
                     userId,
                     username,
@@ -69,18 +57,14 @@ export const handleSocketConnection = (io) => {
                 room.messages.push(newMessage);
                 await room.save();
 
-                // Broadcast message to all users in the room
                 io.to(roomId).emit('new-message', newMessage);
 
-                // Check if message is asking AI for help
                 const messageText = message.toLowerCase();
                 if (messageText.includes('@ai') || messageText.includes('ai help') || messageText.startsWith('ai ')) {
-               
                     setTimeout(async () => {
                         try {
-                            
                             const aiResponse = await generateAIResponse(message, room.messages);
-                            
+
                             const aiMessage = {
                                 userId: 'ai-tutor',
                                 username: 'AI Tutor',
@@ -93,10 +77,8 @@ export const handleSocketConnection = (io) => {
                             await room.save();
 
                             io.to(roomId).emit('new-message', aiMessage);
-                            
                         } catch (error) {
                             console.error('AI response error:', error);
-                            // Send error message to user
                             const errorMessage = {
                                 userId: 'ai-tutor',
                                 username: 'AI Tutor',
@@ -114,7 +96,6 @@ export const handleSocketConnection = (io) => {
             }
         });
 
-        // Handle user leaving room
         socket.on('leave-room', () => {
             if (socket.roomId && socket.username) {
                 socket.to(socket.roomId).emit('user-left', {
@@ -124,7 +105,6 @@ export const handleSocketConnection = (io) => {
             }
         });
 
-        // Handle disconnect
         socket.on('disconnect', () => {
             if (socket.roomId && socket.username) {
                 socket.to(socket.roomId).emit('user-left', {
@@ -132,16 +112,12 @@ export const handleSocketConnection = (io) => {
                     message: `${socket.username} disconnected`
                 });
             }
-            
         });
     });
 };
 
 const generateAIResponse = async (userMessage, chatHistory) => {
     try {
-       
-
-        // Simple test response first
         if (userMessage.toLowerCase().includes('test')) {
             return "Hello! I'm your AI tutor and I'm working perfectly! 🤖 How can I help you study today?";
         }
@@ -168,9 +144,9 @@ Please provide a helpful, encouraging response that:
 Response:`;
 
         const result = await model.generateContent(prompt);
-        const response = await result.response;
+        const response = result.response;
         const responseText = response.text();
-       
+
         return responseText;
     } catch (error) {
         console.error('AI generation error:', error);

@@ -21,7 +21,6 @@ const NotesPage = () => {
     ? notes.filter((n) => n.folder === selectedFolder)
     : notes;
 
-  // Filter notes by search query
   const filteredNotes = displayedNotes.filter(note =>
     note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     note.content.toLowerCase().includes(searchQuery.toLowerCase())
