@@ -129,9 +129,7 @@ const StudyRoomsPage = () => {
                                                 <p className="text-slate-300 text-sm">
                                                     Room ID: {room.roomId} • {room.participantCount} participant{room.participantCount !== 1 ? 's' : ''}
                                                 </p>
-                                                <p className="text-slate-400 text-xs">
-                                                    Created {new Date(room.createdAt).toLocaleString()}
-                                                </p>
+                                                
                                             </div>
                                             <button
                                                 onClick={() => joinRoom(room.roomId)}
