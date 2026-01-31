@@ -16,7 +16,6 @@ const folderSchema=new mongoose.Schema({
         default:null
     }
 },
-{timestamps:true}
 )
 
 const Folder=mongoose.model("Folder",folderSchema)

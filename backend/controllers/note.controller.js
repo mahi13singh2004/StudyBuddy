@@ -14,7 +14,6 @@ export const createNote=async(req,res)=>{
         return res.status(201).json({success:true,note})
     } 
     catch (error) {
-        console.log("Error in createNote backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
@@ -25,7 +24,6 @@ export const getNotes=async(req,res)=>{
         return res.status(200).json({success:true,notes})
     } 
     catch (error) {
-        console.log("Error in getNotes backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
@@ -48,7 +46,6 @@ export const updateNote=async(req,res)=>{
         return res.status(200).json({success:true,note})
     } 
     catch (error) {
-        console.log("Error in updateNote backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
@@ -65,7 +62,6 @@ export const deleteNote=async(req,res)=>{
         return res.status(200).json({success:true})
     } 
     catch (error) {
-        console.log("Error in deleteNote backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }

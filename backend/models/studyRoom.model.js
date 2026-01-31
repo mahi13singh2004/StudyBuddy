@@ -17,10 +17,7 @@ const messageSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    timestamp: {
-        type: Date,
-        default: Date.now
-    }
+
 });
 
 const studyRoomSchema = new mongoose.Schema({
@@ -44,10 +41,7 @@ const studyRoomSchema = new mongoose.Schema({
             ref: "User"
         },
         username: String,
-        joinedAt: {
-            type: Date,
-            default: Date.now
-        }
+
     }],
     messages: [messageSchema],
     isActive: {
@@ -58,9 +52,7 @@ const studyRoomSchema = new mongoose.Schema({
         type: Number,
         default: 10
     }
-}, {
-    timestamps: true
-});
+},);
 
 const StudyRoom = mongoose.model("StudyRoom", studyRoomSchema);
 export default StudyRoom;

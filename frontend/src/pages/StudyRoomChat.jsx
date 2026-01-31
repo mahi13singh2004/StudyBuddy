@@ -18,7 +18,6 @@ const StudyRoomChat = () => {
 
     useEffect(() => {
         if (!user || !user._id) {
-            console.log('User not loaded yet:', user);
             return;
         }
 

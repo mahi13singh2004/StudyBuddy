@@ -18,7 +18,7 @@ const mongooseSchema=new mongoose.Schema({
         type:String,
         default:""
     }
-},{timestamps:true})
+},)
 
 const Pdf=mongoose.model("Pdf",mongooseSchema)
 export default Pdf

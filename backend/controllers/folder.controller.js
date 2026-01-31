@@ -14,7 +14,6 @@ export const createFolder=async(req,res)=>{
         return res.status(201).json({success:true,folder})
     } 
     catch (error) {
-        console.log("Error in createFolder backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
@@ -25,7 +24,6 @@ export const getFolders=async(req,res)=>{
         return res.status(200).json({success:true,folders})
     } 
     catch (error) {
-        console.log("Error in getFolders backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
@@ -48,7 +46,6 @@ export const updateFolder=async(req,res)=>{
         return res.status(200).json({success:true,folder})
     } 
     catch (error) {
-        console.log("Error in updateFolder backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
@@ -65,7 +62,6 @@ export const deleteFolder=async(req,res)=>{
         return res.status(200).json({success:true})
     } 
     catch (error) {
-        console.log("Error in deleteFolder backend",error)
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }

@@ -45,7 +45,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
 
                 return true;
             } catch (error) {
-                console.log(`Backend wake-up attempt ${attempts} failed:`, error.message);
+                
 
                 if (attempts >= maxAttempts) {
                     setStatus('Proceeding to app...');

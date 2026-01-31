@@ -16,7 +16,6 @@ const generateTokenAndSetCookie=async(res,id)=>{
         return token
     } 
     catch (error) {
-        console.log("Error in setting token",error)
         return res.status(500).json({message:"Internal Server Error"})  
     }
 }

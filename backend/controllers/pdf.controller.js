@@ -13,16 +13,13 @@ export const uploadPDF = async (req, res) => {
     const { originalname, filename, path: filePath } = req.file;
     const userId = req.user._id;
 
-    console.log("Extracting text from PDF:", originalname);
     let extractedText = "";
     try {
-      console.log("Extracting text from PDF:", filePath);
 
       const dataBuffer = fs.readFileSync(filePath);
-      console.log("PDF file size:", dataBuffer.length, "bytes");
 
       const pdfjsLib = await import("pdfjs-dist/legacy/build/pdf.mjs");
-      console.log("PDF.js library imported successfully");
+
 
       const uint8Array = new Uint8Array(dataBuffer);
 
@@ -32,7 +29,6 @@ export const uploadPDF = async (req, res) => {
       });
 
       const pdfDocument = await loadingTask.promise;
-      console.log("PDF document loaded, pages:", pdfDocument.numPages);
 
       let allText = "";
       for (let pageNum = 1; pageNum <= pdfDocument.numPages; pageNum++) {
@@ -44,21 +40,14 @@ export const uploadPDF = async (req, res) => {
 
       extractedText = allText.trim();
 
-      console.log("PDF text extraction completed:", {
-        pages: pdfDocument.numPages,
-        textLength: extractedText.length,
-        hasText: extractedText.trim().length > 0,
-      });
+     
 
       if (!extractedText || extractedText.trim().length === 0) {
         console.warn("PDF text is empty or contains only whitespace");
         extractedText =
           "PDF appears to be empty or contains no extractable text.";
       } else {
-        console.log(
-          "PDF text extracted successfully, length:",
-          extractedText.length
-        );
+        
       }
     } catch (extractError) {
       console.error("Error extracting PDF text:", extractError);
