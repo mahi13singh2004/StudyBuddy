@@ -5,22 +5,32 @@ import Spinner from '../components/Spinner.jsx'
 
 const Signup = () => {
   const navigate = useNavigate()
-  const { signup, err, loading } = useAuthStore()
+  const { signup, err, loading, stopLoading } = useAuthStore()
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: ""
   })
+  const [loadingMessage, setLoadingMessage] = useState("Creating your account...");
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await signup({
-      name: form.name,
-      email: form.email,
-      password: form.password
-    })
-    if (res) {
-      navigate("/")
+    try {
+      setLoadingMessage("Setting up your study space...");
+      const res = await signup({
+        name: form.name,
+        email: form.email,
+        password: form.password
+      })
+      if (res) {
+        setLoadingMessage("Welcome! Redirecting to your dashboard...");
+        setTimeout(() => {
+          navigate("/")
+          setTimeout(() => stopLoading(), 100);
+        }, 500);
+      }
+    } catch (error) {
+      console.error("Signup failed:", error);
     }
   }
 
@@ -37,14 +47,14 @@ const Signup = () => {
               Study<span className="bg-gradient-to-r from-fuchsia-400 to-cyan-600 bg-clip-text text-transparent">Buddy</span>
             </h1>
 
-            <p className="text-slate-300 text-lg mb-6">Creating your account...</p>
+            <p className="text-slate-300 text-lg mb-6">{loadingMessage}</p>
 
             <div className="mb-6">
               <Spinner size="lg" color="blue" className="mx-auto" />
             </div>
 
             <div className="text-slate-400 text-sm">
-              <p>🚀 Setting up your study space</p>
+              <p>🚀 {loadingMessage.includes("Welcome") ? "Welcome to StudyBuddy!" : "Setting up your study space"}</p>
             </div>
           </div>
         </div>

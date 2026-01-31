@@ -15,10 +15,8 @@ export const useAuthStore = create((set) => ({
       set({ user: res.data.user });
       return true;
     } catch (error) {
-      set({ err: error.response?.data?.message || "Signup failed" });
+      set({ err: error.response?.data?.message || "Signup failed", loading: false });
       throw error;
-    } finally {
-      set({ loading: false });
     }
   },
 
@@ -29,10 +27,8 @@ export const useAuthStore = create((set) => ({
       set({ user: res.data.user });
       return true;
     } catch (error) {
-      set({ err: error.response?.data?.message || "Login failed" });
+      set({ err: error.response?.data?.message || "Login failed", loading: false });
       throw error;
-    } finally {
-      set({ loading: false });
     }
   },
 
@@ -61,5 +57,9 @@ export const useAuthStore = create((set) => ({
     } finally {
       set({ loading: false });
     }
+  },
+
+  stopLoading: () => {
+    set({ loading: false });
   },
 }));

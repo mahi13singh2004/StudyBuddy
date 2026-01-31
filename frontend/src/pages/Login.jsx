@@ -5,20 +5,30 @@ import Spinner from "../components/Spinner.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login, err, loading } = useAuthStore();
+  const { login, err, loading, stopLoading } = useAuthStore();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+  const [loadingMessage, setLoadingMessage] = useState("Signing you in...");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await login({
-      email: form.email,
-      password: form.password,
-    });
-    if (res) {
-      navigate("/");
+    try {
+      setLoadingMessage("Authenticating your credentials...");
+      const res = await login({
+        email: form.email,
+        password: form.password,
+      });
+      if (res) {
+        setLoadingMessage("Redirecting to your dashboard...");
+        setTimeout(() => {
+          navigate("/");
+          setTimeout(() => stopLoading(), 100);
+        }, 500);
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
     }
   };
 
@@ -42,14 +52,14 @@ const Login = () => {
               Study<span className="bg-gradient-to-r from-cyan-400 to-fuchsia-600 bg-clip-text text-transparent">Buddy</span>
             </h1>
 
-            <p className="text-slate-300 text-lg mb-6">Signing you in...</p>
+            <p className="text-slate-300 text-lg mb-6">{loadingMessage}</p>
 
             <div className="mb-6">
               <Spinner size="lg" color="blue" className="mx-auto" />
             </div>
 
             <div className="text-slate-400 text-sm">
-              <p>🔐 Authenticating your credentials</p>
+              <p>🔐 {loadingMessage.includes("Redirecting") ? "Taking you to your dashboard" : "Authenticating your credentials"}</p>
             </div>
           </div>
         </div>
