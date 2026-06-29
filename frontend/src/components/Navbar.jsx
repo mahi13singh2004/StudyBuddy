@@ -75,7 +75,7 @@ const Navbar = () => {
     return (
         <>
             {isLoggingOut && (
-                <div className="fixed inset-0 z-[100] bg-[#0a0a0a]/95 backdrop-blur-sm flex items-center justify-center">
+                <div className="fixed inset-0 z-[9999] bg-[#0a0a0a] flex items-center justify-center">
                     <div className="text-center max-w-md mx-auto px-6">
                         <img
                             src={logo}
