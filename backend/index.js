@@ -30,37 +30,17 @@ if (process.env.NODE_ENV === "production") {
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com", /https:\/\/.*\.onrender\.com$/],
+    origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com"],
     credentials: true,
   }
 });
 
 app.use(express.json());
 app.use(cookieParser());
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      "http://localhost:5173",
-      "https://studybuddy-frontend-9meh.onrender.com",
-    ];
-
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin) || /https:\/\/.*\.onrender\.com$/.test(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  exposedHeaders: ["Set-Cookie"],
-  optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com"],
+  credentials: true
+}));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
