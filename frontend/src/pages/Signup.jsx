@@ -16,8 +16,9 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoadingMessage("Setting up your study space...");
+
     try {
-      setLoadingMessage("Setting up your study space...");
       const res = await signup({
         name: form.name,
         email: form.email,
@@ -32,15 +33,23 @@ const Signup = () => {
       }
     } catch (error) {
       console.error("Signup failed:", error);
+      setLoadingMessage("Creating your account...");
     }
   }
 
   return (
     <>
       {loading && (
-        <div className="fixed inset-0 z-50 bg-[#0a0a0a] flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm flex items-center justify-center">
           <div className="text-center max-w-md mx-auto px-6">
-            <img src={logo} alt="StudyBuddy" className="h-20 mx-auto mb-6" />
+            <img
+              src={logo}
+              alt="StudyBuddy"
+              className="h-20 mx-auto mb-6"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+            />
 
             <h1 className="text-4xl font-bold text-white mb-2">
               Study<span className="text-green-500">Buddy</span>
@@ -48,12 +57,14 @@ const Signup = () => {
 
             <p className="text-slate-300 text-lg mb-6">{loadingMessage}</p>
 
-            <div className="mb-6">
-              <Spinner size="lg" color="gray" className="mx-auto" />
+            <div className="mb-6 flex justify-center">
+              <Spinner size="lg" color="green" />
             </div>
 
             <div className="text-slate-400 text-sm">
-              <p>🚀 {loadingMessage.includes("Welcome") ? "Welcome to StudyBuddy!" : "Setting up your study space"}</p>
+              <p className="animate-pulse">
+                {loadingMessage.includes("Welcome") ? "✓ Welcome to StudyBuddy!" : "● Setting up your study space"}
+              </p>
             </div>
           </div>
         </div>
