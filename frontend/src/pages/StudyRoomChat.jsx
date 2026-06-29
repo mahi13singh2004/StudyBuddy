@@ -188,8 +188,8 @@ const StudyRoomChat = () => {
                         ))}
                     </div>
 
-                    <div className="mt-8 p-4 bg-blue-900/30 rounded-lg border border-blue-800/50">
-                        <h4 className="font-semibold text-sm mb-2 text-blue-300">💡 AI Help</h4>
+                    <div className="mt-8 p-4 bg-gray-800 rounded-lg border border-gray-700">
+                        <h4 className="font-semibold text-sm mb-2 text-green-300">💡 AI Help</h4>
                         <p className="text-xs text-slate-400">
                             Try these commands:
                         </p>

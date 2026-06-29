@@ -29,7 +29,7 @@ const Home = () => {
       title: "Smart Notes",
       description: "Organize your study materials with intelligent note-taking and folder management",
       link: "/notes",
-      color: "from-blue-500 to-blue-600",
+      color: "from-green-500 to-green-600",
       benefits: ["Organized folders", "Markdown support", "Drag & drop"]
     },
     {
@@ -37,7 +37,7 @@ const Home = () => {
       title: "AI Assistant",
       description: "Transform your notes into interactive flashcards and study questions",
       link: "/ai",
-      color: "from-purple-500 to-purple-600",
+      color: "from-green-500 to-green-600",
       benefits: ["Smart flashcards", "Study questions", "AI summaries"]
     },
     {

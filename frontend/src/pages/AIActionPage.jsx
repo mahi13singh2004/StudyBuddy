@@ -183,7 +183,7 @@ const AIActionPage = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 <div className="mb-6 sm:mb-8">
                     <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-600 rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-lg sm:text-xl">🤖</span>
                         </div>
                         <h1 className="text-2xl sm:text-3xl font-bold text-white">AI Quick Actions</h1>
@@ -195,7 +195,7 @@ const AIActionPage = () => {
                     <select
                         value={selectedFolder}
                         onChange={(e) => setSelectedFolder(e.target.value)}
-                        className="w-full p-3 sm:p-4 bg-slate-800 border border-slate-600 rounded-xl text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm sm:text-base"
+                        className="w-full p-3 sm:p-4 bg-slate-800 border border-slate-600 rounded-xl text-white focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm sm:text-base"
                     >
                         <option value="">-- Choose a folder --</option>
                         {Array.isArray(folders) && folders.map((folder) => (
@@ -255,7 +255,7 @@ const AIActionPage = () => {
                         {loading && (
                             <div className="flex items-center justify-center py-8 sm:py-12">
                                 <div className="text-center">
-                                    <Spinner size="lg" color="purple" className="mx-auto mb-3 sm:mb-4" />
+                                    <Spinner size="lg" color="gray" className="mx-auto mb-3 sm:mb-4" />
                                     <p className="text-slate-300 text-base sm:text-lg">⏳ Processing your request...</p>
                                     <p className="text-slate-500 text-xs sm:text-sm mt-2">This may take a few moments</p>
                                 </div>
@@ -296,7 +296,7 @@ const AIActionPage = () => {
                                             {parseQuestions(result).length > 0 ? parseQuestions(result).map((question, index) => (
                                                 <div key={index} className="bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm rounded-xl p-6 border border-slate-600 hover:border-slate-500 transition-all duration-200 hover:shadow-lg">
                                                     <div className="flex items-start space-x-4">
-                                                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                                                        <div className="flex-shrink-0 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                                                             {index + 1}
                                                         </div>
                                                         <div className="flex-1">
@@ -319,7 +319,7 @@ const AIActionPage = () => {
                                                             </div>
                                                         </div>
                                                         <div className="flex-shrink-0">
-                                                            <button className="p-2 bg-blue-500/20 text-blue-300 rounded-lg hover:bg-blue-500/30 transition-colors" title="Mark as completed">
+                                                            <button className="p-2 bg-green-500/20 text-green-300 rounded-lg hover:bg-green-500/30 transition-colors" title="Mark as completed">
                                                                 ✓
                                                             </button>
                                                         </div>
@@ -385,13 +385,13 @@ const ActionCard = ({ title, description, onClick, color, icon, disabled }) => {
             onClick={disabled ? undefined : onClick}
             className={`cursor-pointer border rounded-xl p-4 sm:p-6 transition-all duration-300 group ${disabled
                 ? 'bg-slate-800/30 border-slate-700 cursor-not-allowed opacity-50'
-                : `bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 hover:border-slate-600 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20`
+                : `bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 hover:border-slate-600 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20`
                 }`}
         >
             <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${color} rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300`}>
                 <span className="text-2xl sm:text-3xl">{icon}</span>
             </div>
-            <h2 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-white group-hover:text-purple-300 transition-colors">{title}</h2>
+            <h2 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-white group-hover:text-green-300 transition-colors">{title}</h2>
             <p className="text-slate-400 leading-relaxed text-sm sm:text-base">{description}</p>
             {disabled && (
                 <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-slate-700/50 rounded-lg border border-slate-600">

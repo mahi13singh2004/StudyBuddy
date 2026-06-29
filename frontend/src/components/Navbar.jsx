@@ -16,14 +16,14 @@ const Navbar = () => {
             title: "Smart Notes",
             description: "Organize your study materials",
             link: "/notes",
-            color: "hover:bg-blue-50 hover:text-blue-600"
+            color: "hover:bg-green-50 hover:text-green-600"
         },
         {
             icon: "🤖",
             title: "AI Assistant",
             description: "Transform notes into flashcards",
             link: "/ai",
-            color: "hover:bg-purple-50 hover:text-purple-600"
+            color: "hover:bg-green-50 hover:text-green-600"
         },
         {
             icon: "📄",

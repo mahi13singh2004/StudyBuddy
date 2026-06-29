@@ -166,7 +166,7 @@ const ProfilePage = () => {
                     <div className="space-y-2 sm:space-y-3">
                         <div className="flex justify-between items-center">
                             <span className="text-slate-300 text-sm sm:text-base">Notes this week</span>
-                            <span className="text-blue-400 font-semibold text-sm sm:text-base">0/10</span>
+                            <span className="text-green-400 font-semibold text-sm sm:text-base">0/10</span>
                         </div>
                         <div className="w-full bg-slate-700 rounded-full h-1.5 sm:h-2">
                             <div className="bg-blue-500 h-1.5 sm:h-2 rounded-full" style={{ width: '0%' }}></div>

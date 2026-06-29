@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Global Dark Theme Styles */
 * {
   box-sizing: border-box;
 }
@@ -12,11 +11,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0f172a;
+  background-color: #0a0a0a;
   color: #f1f5f9;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -34,7 +32,6 @@ body {
   background: #64748b;
 }
 
-/* Smooth transitions */
 * {
   transition: all 0.2s ease-in-out;
 }

@@ -9,7 +9,7 @@ const Spinner = ({ size = 'md', color = 'blue', className = '' }) => {
 
     const colorClasses = {
         blue: 'border-blue-500',
-        purple: 'border-purple-500',
+        gray: 'border-gray-500',
         green: 'border-green-500',
         red: 'border-red-500',
         white: 'border-white',
