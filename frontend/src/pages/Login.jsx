@@ -54,7 +54,7 @@ const Login = () => {
             <p className="text-slate-300 text-lg mb-6">{loadingMessage}</p>
 
             <div className="mb-6">
-              <Spinner size="lg" color="gray" className="mx-auto" />
+              <Spinner size="lg" color="green" className="mx-auto" />
             </div>
 
             <div className="text-slate-400 text-sm">

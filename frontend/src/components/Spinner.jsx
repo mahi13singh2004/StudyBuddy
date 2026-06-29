@@ -1,23 +1,23 @@
 
-const Spinner = ({ size = 'md', color = 'blue', className = '' }) => {
+const Spinner = ({ size = 'md', color = 'green', className = '' }) => {
     const sizeClasses = {
-        sm: 'h-4 w-4',
-        md: 'h-8 w-8',
-        lg: 'h-12 w-12',
-        xl: 'h-16 w-16'
+        sm: 'h-4 w-4 border-2',
+        md: 'h-8 w-8 border-3',
+        lg: 'h-12 w-12 border-4',
+        xl: 'h-16 w-16 border-4'
     };
 
     const colorClasses = {
-        blue: 'border-blue-500',
-        gray: 'border-gray-500',
-        green: 'border-green-500',
-        red: 'border-red-500',
-        white: 'border-white',
-        slate: 'border-slate-400'
+        blue: 'border-gray-800 border-t-blue-500',
+        gray: 'border-gray-800 border-t-gray-300',
+        green: 'border-gray-800 border-t-green-500',
+        red: 'border-gray-800 border-t-red-500',
+        white: 'border-gray-700 border-t-white',
+        slate: 'border-gray-800 border-t-slate-300'
     };
 
     return (
-        <div className={`animate-spin rounded-full border-2 border-gray-300 border-t-transparent ${sizeClasses[size]} ${colorClasses[color]} ${className}`}></div>
+        <div className={`animate-spin rounded-full ${colorClasses[color]} ${sizeClasses[size]} ${className}`}></div>
     );
 };
 

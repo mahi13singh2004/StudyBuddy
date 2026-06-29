@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../utils/axios.js';
+import logo from '../assets/logo.png';
 
 const LoadingScreen = ({ onLoadingComplete }) => {
     const [status, setStatus] = useState('Waking up backend...');
@@ -82,11 +83,11 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
             <div className="text-center space-y-10 px-6 max-w-2xl">
                 <div className="mb-10">
-                    <img src="/src/assets/logo.png" alt="StudyBuddy" className="h-24 mx-auto" />
+                    <img src={logo} alt="StudyBuddy" className="h-24 mx-auto" />
                 </div>
 
                 <div className="w-16 h-16 mx-auto mb-8">
-                    <div className="w-full h-full border-4 border-gray-700 border-t-gray-400 rounded-full animate-spin"></div>
+                    <div className="w-full h-full border-4 border-gray-800 border-t-green-500 rounded-full animate-spin"></div>
                 </div>
 
                 <div className="space-y-6">
