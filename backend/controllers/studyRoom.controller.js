@@ -70,11 +70,9 @@ export const joinRoom = async (req, res) => {
             });
         }
 
-
         if (room.participants.length >= room.maxParticipants) {
             return res.status(400).json({ error: "Room is full" });
         }
-
 
         room.participants.push({
             userId,
@@ -96,32 +94,6 @@ export const joinRoom = async (req, res) => {
         });
     } catch (error) {
         console.error("Error joining room:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
-};
-
-export const getRoomDetails = async (req, res) => {
-    try {
-        const { roomId } = req.params;
-
-        const room = await StudyRoom.findOne({ roomId, isActive: true });
-
-        if (!room) {
-            return res.status(404).json({ error: "Room not found" });
-        }
-
-        res.status(200).json({
-            success: true,
-            room: {
-                roomId: room.roomId,
-                roomName: room.roomName,
-                participants: room.participants,
-                messages: room.messages.slice(-50),
-                createdAt: room.createdAt
-            }
-        });
-    } catch (error) {
-        console.error("Error getting room details:", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
@@ -179,80 +151,33 @@ export const leaveRoom = async (req, res) => {
     }
 };
 
-// Cleanup function to remove old inactive rooms (runs every hour)
-const cleanupInactiveRooms = async () => {
-    try {
-        const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
-
-        // Remove rooms that have been inactive for more than 24 hours
-        const result = await StudyRoom.deleteMany({
-            isActive: false,
-            updatedAt: { $lt: oneDayAgo }
-        });
-
-        if (result.deletedCount > 0) {
-            console.log(`Cleaned up ${result.deletedCount} inactive rooms`);
-        }
-    } catch (error) {
-        console.error('Error cleaning up inactive rooms:', error);
-    }
-};
-
-// Run cleanup every hour
-setInterval(cleanupInactiveRooms, 60 * 60 * 1000);
-
-export const getActiveRooms = async (req, res) => { = async (req, res) => {
+export const getRoomDetails = async (req, res) => {
     try {
         const { roomId } = req.params;
-        const userId = req.user._id;
 
         const room = await StudyRoom.findOne({ roomId, isActive: true });
 
         if (!room) {
-            return res.status(404).json({ error: "Room not found or inactive" });
+            return res.status(404).json({ error: "Room not found" });
         }
 
-        // Remove user from participants
-        const originalParticipantCount = room.participants.length;
-        room.participants = room.participants.filter(
-            p => p.userId.toString() !== userId.toString()
-        );
-
-        // Check if user was actually in the room
-        if (room.participants.length === originalParticipantCount) {
-            return res.status(400).json({ error: "User was not in the room" });
-        }
-
-        // Check if room creator left or room is empty
-        const isCreator = room.createdBy.toString() === userId.toString();
-        const isEmpty = room.participants.length === 0;
-
-        if (isCreator || isEmpty) {
-            // Deactivate room if creator leaves or room is empty
-            room.isActive = false;
-            await room.save();
-
-            res.status(200).json({
-                success: true,
-                message: "Left room successfully. Room has been closed.",
-                roomClosed: true
-            });
-        } else {
-            // Just save the updated participants list
-            await room.save();
-
-            res.status(200).json({
-                success: true,
-                message: "Left room successfully",
-                participantCount: room.participants.length,
-                roomClosed: false
-            });
-        }
+        res.status(200).json({
+            success: true,
+            room: {
+                roomId: room.roomId,
+                roomName: room.roomName,
+                participants: room.participants,
+                messages: room.messages.slice(-50),
+                createdAt: room.createdAt
+            }
+        });
     } catch (error) {
-        console.error("Error leaving room:", error);
+        console.error("Error getting room details:", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
+
+export const getActiveRooms = async (req, res) => {
     try {
         const rooms = await StudyRoom.find({ isActive: true })
             .select('roomId roomName participants createdAt')
@@ -275,3 +200,25 @@ export const getActiveRooms = async (req, res) => { = async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 };
+
+// Cleanup function to remove old inactive rooms (runs every hour)
+const cleanupInactiveRooms = async () => {
+    try {
+        const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+        
+        // Remove rooms that have been inactive for more than 24 hours
+        const result = await StudyRoom.deleteMany({
+            isActive: false,
+            updatedAt: { $lt: oneDayAgo }
+        });
+        
+        if (result.deletedCount > 0) {
+            console.log(`Cleaned up ${result.deletedCount} inactive rooms`);
+        }
+    } catch (error) {
+        console.error('Error cleaning up inactive rooms:', error);
+    }
+};
+
+// Run cleanup every hour
+setInterval(cleanupInactiveRooms, 60 * 60 * 1000);
