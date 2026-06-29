@@ -36,11 +36,11 @@ const PDFChatPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
+    <div className="min-h-screen bg-[#0a0a0a] pt-16">
       <header className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg sm:text-xl">📄</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold text-white">PDF AI Chat</h1>
@@ -105,7 +105,7 @@ const PDFChatPage = () => {
                 <div
                   key={idx}
                   className={`mb-3 sm:mb-4 p-2 sm:p-3 rounded-lg max-w-full sm:max-w-3xl ${msg.role === "user"
-                    ? "bg-blue-600 text-white ml-auto"
+                    ? "bg-green-600 text-white ml-auto"
                     : "bg-slate-700 text-slate-200 mr-auto"
                     }`}
                 >

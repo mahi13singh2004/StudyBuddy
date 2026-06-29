@@ -26,9 +26,9 @@ const ProfilePage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center pt-16">
+            <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center pt-16">
                 <div className="text-center">
-                    <Spinner size="lg" color="blue" className="mx-auto mb-3 sm:mb-4" />
+                    <Spinner size="lg" color="gray" className="mx-auto mb-3 sm:mb-4" />
                     <p className="text-slate-300 text-sm sm:text-base">Loading your profile...</p>
                 </div>
             </div>
@@ -40,9 +40,9 @@ const ProfilePage = () => {
             title: "Notes Created",
             value: stats?.notesCount || 0,
             icon: "📝",
-            color: "from-blue-500 to-blue-600",
-            bgColor: "bg-blue-500/10",
-            borderColor: "border-blue-500/20"
+            color: "from-green-500 to-green-600",
+            bgColor: "bg-green-500/10",
+            borderColor: "border-green-500/20"
         },
         {
             title: "PDFs Uploaded",
@@ -56,18 +56,18 @@ const ProfilePage = () => {
             title: "AI Queries",
             value: stats?.aiQueries || 0,
             icon: "🤖",
-            color: "from-purple-500 to-purple-600",
-            bgColor: "bg-purple-500/10",
-            borderColor: "border-purple-500/20"
+            color: "from-green-500 to-green-600",
+            bgColor: "bg-green-500/10",
+            borderColor: "border-green-500/20"
         }
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
+        <div className="min-h-screen bg-[#0a0a0a] pt-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
                     <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-600 rounded-full flex items-center justify-center">
                             <span className="text-white font-bold text-lg sm:text-2xl">
                                 {user.name?.charAt(0).toUpperCase()}
                             </span>

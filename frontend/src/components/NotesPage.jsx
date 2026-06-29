@@ -72,7 +72,7 @@ const NotesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
+    <div className="min-h-screen bg-[#0a0a0a] pt-16">
       <div className="flex flex-col lg:flex-row h-screen max-w-7xl mx-auto">
         <div className="lg:w-64 flex-shrink-0">
           <FolderSidebar onSelectFolder={setSelectedFolder} onDropNote={handleDropNoteToFolder} activeFolderId={selectedFolder} />
@@ -92,7 +92,7 @@ const NotesPage = () => {
               </div>
               <button
                 onClick={() => setShowCreateForm(!showCreateForm)}
-                className="px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2"
+                className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 flex items-center justify-center space-x-2"
               >
                 <span>+</span>
                 <span className="text-sm sm:text-base">New Note</span>
@@ -147,14 +147,14 @@ const NotesPage = () => {
                 {editingNote ? (
                   <button
                     onClick={handleUpdate}
-                    className="px-3 sm:px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 text-sm sm:text-base"
+                    className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 text-sm sm:text-base"
                   >
                     Update Note
                   </button>
                 ) : (
                   <button
                     onClick={handleCreate}
-                    className="px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 text-sm sm:text-base"
+                    className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 text-sm sm:text-base"
                   >
                     Create Note
                   </button>
@@ -188,7 +188,7 @@ const NotesPage = () => {
               {!searchQuery && (
                 <button
                   onClick={() => setShowCreateForm(true)}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 text-sm sm:text-base"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-200 text-sm sm:text-base"
                 >
                   Create First Note
                 </button>

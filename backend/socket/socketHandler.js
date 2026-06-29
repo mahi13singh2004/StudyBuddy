@@ -96,21 +96,91 @@ export const handleSocketConnection = (io) => {
             }
         });
 
-        socket.on('leave-room', () => {
-            if (socket.roomId && socket.username) {
-                socket.to(socket.roomId).emit('user-left', {
-                    username: socket.username,
-                    message: `${socket.username} left the study room`
-                });
+        socket.on('leave-room', async () => {
+            if (socket.roomId && socket.username && socket.userId) {
+                try {
+                    // Remove participant from database
+                    const room = await StudyRoom.findOne({ roomId: socket.roomId, isActive: true });
+                    if (room) {
+                        // Remove user from participants array
+                        room.participants = room.participants.filter(
+                            p => p.userId.toString() !== socket.userId.toString()
+                        );
+
+                        // Check if room creator left or room is empty
+                        const isCreator = room.createdBy.toString() === socket.userId.toString();
+                        const isEmpty = room.participants.length === 0;
+
+                        if (isCreator || isEmpty) {
+                            // Deactivate room if creator leaves or room is empty
+                            room.isActive = false;
+                            await room.save();
+
+                            // Notify remaining participants that room is closing
+                            socket.to(socket.roomId).emit('room-closed', {
+                                message: isCreator
+                                    ? `Room closed: ${socket.username} (creator) left the study room`
+                                    : 'Room closed: No participants remaining'
+                            });
+                        } else {
+                            // Just save the updated participants list
+                            await room.save();
+
+                            // Notify remaining participants
+                            socket.to(socket.roomId).emit('user-left', {
+                                username: socket.username,
+                                message: `${socket.username} left the study room`,
+                                participantCount: room.participants.length
+                            });
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error handling leave room:', error);
+                }
             }
         });
 
-        socket.on('disconnect', () => {
-            if (socket.roomId && socket.username) {
-                socket.to(socket.roomId).emit('user-left', {
-                    username: socket.username,
-                    message: `${socket.username} disconnected`
-                });
+        socket.on('disconnect', async () => {
+            if (socket.roomId && socket.username && socket.userId) {
+                try {
+                    // Remove participant from database
+                    const room = await StudyRoom.findOne({ roomId: socket.roomId, isActive: true });
+                    if (room) {
+                        // Remove user from participants array
+                        room.participants = room.participants.filter(
+                            p => p.userId.toString() !== socket.userId.toString()
+                        );
+
+                        // Check if room creator disconnected or room is empty
+                        const isCreator = room.createdBy.toString() === socket.userId.toString();
+                        const isEmpty = room.participants.length === 0;
+
+                        if (isCreator || isEmpty) {
+                            // Deactivate room if creator disconnects or room is empty
+                            room.isActive = false;
+                            await room.save();
+
+                            // Notify remaining participants that room is closing
+                            socket.to(socket.roomId).emit('room-closed', {
+                                message: isCreator
+                                    ? `Room closed: ${socket.username} (creator) disconnected`
+                                    : 'Room closed: No participants remaining'
+                            });
+                        } else {
+                            // Just save the updated participants list
+                            await room.save();
+
+                            // Notify remaining participants
+                            socket.to(socket.roomId).emit('user-left', {
+                                username: socket.username,
+                                message: `${socket.username} disconnected`,
+                                participantCount: room.participants.length
+                            });
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error handling disconnect:', error);
+                }
             }
         });
     });

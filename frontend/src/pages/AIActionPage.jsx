@@ -179,7 +179,7 @@ const AIActionPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
+        <div className="min-h-screen bg-[#0a0a0a] pt-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 <div className="mb-6 sm:mb-8">
                     <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
@@ -211,7 +211,7 @@ const AIActionPage = () => {
                         title="📄 Summarize Notes"
                         description="Transform your notes into a comprehensive, easy-to-read summary with key points highlighted."
                         onClick={() => handleAction("summarize")}
-                        color="from-blue-500 to-blue-600"
+                        color="from-green-500 to-green-600"
                         icon="📄"
                         disabled={!selectedFolder}
                     />
@@ -227,7 +227,7 @@ const AIActionPage = () => {
                         title="❓ Generate Questions"
                         description="Transform explanations into proper study questions with enhanced formatting and study tips."
                         onClick={() => handleAction("questions")}
-                        color="from-purple-500 to-purple-600"
+                        color="from-green-500 to-green-600"
                         icon="❓"
                         disabled={!selectedFolder}
                     />

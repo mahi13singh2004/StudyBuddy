@@ -8,18 +8,16 @@ const Home = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="text-center">
           <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
-              <span className="text-white font-bold text-2xl">SB</span>
-            </div>
+            <img src={logo} alt="StudyBuddy" className="h-16 mx-auto mr-4" />
             <h1 className="text-4xl font-bold text-white">
-              Study<span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">Buddy</span>
+              Study<span className="text-green-500">Buddy</span>
             </h1>
           </div>
-          <Spinner size="lg" color="blue" className="mx-auto mb-4" />
-          <p className="text-slate-300 text-lg">Loading your study dashboard...</p>
+          <Spinner size="lg" color="gray" className="mx-auto mb-4" />
+          <p className="text-gray-300 text-lg">Loading your study dashboard...</p>
         </div>
       </div>
     );
@@ -76,16 +74,14 @@ const Home = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
-      <section className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0a0a0a] pt-16">
+      <section className="py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="text-center mb-6 sm:mb-8 lg:mb-10">
             <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 sm:mb-0 sm:mr-4">
-                <span className="text-white font-bold text-lg sm:text-2xl">SB</span>
-              </div>
+              <img src={logo} alt="StudyBuddy" className="h-12 sm:h-16 mb-4 sm:mb-0 sm:mr-4" />
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-                Study<span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">Buddy</span>
+                Study<span className="text-green-500">Buddy</span>
               </h1>
             </div>
             <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4">
@@ -101,18 +97,18 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
             <div className="space-y-6 sm:space-y-8">
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
                   Transform Your
-                  <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                  <span className="block text-green-500">
                     Study Experience
                   </span>
                 </h2>
-                <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-6 sm:mb-8">
+                <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-4 sm:mb-6">
                   StudyBuddy combines the power of AI with intuitive design to help you study smarter, not harder.
                   From intelligent note-taking to interactive flashcards, we've got everything you need to excel.
                 </p>
@@ -120,7 +116,7 @@ const Home = () => {
 
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-xs sm:text-sm">✓</span>
                   </div>
                   <div>
@@ -130,7 +126,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-xs sm:text-sm">✓</span>
                   </div>
                   <div>
@@ -140,7 +136,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-xs sm:text-sm">✓</span>
                   </div>
                   <div>
@@ -153,7 +149,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   to="/notes"
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200 text-center"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-all duration-200 text-center"
                 >
                   Start Studying Now
                 </Link>
@@ -182,7 +178,7 @@ const Home = () => {
                   </p>
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     <div className="bg-slate-700/50 rounded-lg p-3 sm:p-4">
-                      <div className="text-xl sm:text-2xl font-bold text-blue-400">95%</div>
+                      <div className="text-xl sm:text-2xl font-bold text-green-400">95%</div>
                       <div className="text-slate-400 text-xs sm:text-sm">Success Rate</div>
                     </div>
                     <div className="bg-slate-700/50 rounded-lg p-3 sm:p-4">
@@ -197,9 +193,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
+      <section className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 bg-slate-800/20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="text-center mb-6 sm:mb-8 lg:mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
               Powerful Features We Offer
             </h2>
@@ -208,23 +204,23 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {features.map((feature, index) => (
               <Link
                 key={index}
                 to={feature.link}
                 className="group block"
               >
-                <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 sm:p-8 hover:bg-slate-800/70 hover:border-slate-600 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-4 sm:p-6 hover:bg-slate-800/70 hover:border-slate-600 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  <div className="flex flex-col sm:flex-row items-start space-y-3 sm:space-y-0 sm:space-x-4">
                     <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0`}>
                       <span className="text-2xl sm:text-3xl">{feature.icon}</span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-300 transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">
                         {feature.title}
                       </h3>
-                      <p className="text-slate-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                      <p className="text-slate-400 mb-2 sm:mb-3 leading-relaxed text-sm sm:text-base">
                         {feature.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -243,9 +239,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
               Trusted by Students Worldwide
             </h2>
@@ -253,9 +249,9 @@ const Home = () => {
               Join the growing community of successful learners
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-slate-700 text-center hover:bg-slate-800/70 transition-all duration-200">
+              <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-slate-700 text-center hover:bg-slate-800/70 transition-all duration-200">
                 <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{stat.icon}</div>
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">{stat.number}</div>
                 <div className="text-slate-400 text-sm sm:text-base">{stat.label}</div>
@@ -265,18 +261,18 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
+      <section className="py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">
             Ready to Transform Your Study Experience?
           </h2>
-          <p className="text-lg sm:text-xl text-slate-300 mb-6 sm:mb-8 px-4">
+          <p className="text-lg sm:text-xl text-slate-300 mb-4 sm:mb-6 px-4">
             Join thousands of students who are already studying smarter with StudyBuddy
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               to="/notes"
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-all duration-200"
             >
               Get Started Free
             </Link>
@@ -289,23 +285,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <footer className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-700">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-3 sm:mb-0 sm:mr-3">
-              <span className="text-white font-bold text-base sm:text-lg">SB</span>
-            </div>
-            <span className="text-xl sm:text-2xl font-bold text-white">StudyBuddy</span>
-          </div>
-          <p className="text-slate-400 mb-3 sm:mb-4 text-sm sm:text-base">
-            Your intelligent study companion for academic success
-          </p>
-          <p className="text-slate-500 text-xs sm:text-sm">
-            &copy; 2024 StudyBuddy. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   )
 }

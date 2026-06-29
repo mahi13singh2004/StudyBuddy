@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '../store/auth.store.js'
 import Spinner from '../components/Spinner.jsx'
+import logo from '../assets/logo.png'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -37,20 +38,18 @@ const Signup = () => {
   return (
     <>
       {loading && (
-        <div className="fixed inset-0 z-50 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#0a0a0a] flex items-center justify-center">
           <div className="text-center max-w-md mx-auto px-6">
-            <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-fuchsia-500 to-cyan-400 rounded-2xl flex items-center justify-center shadow-2xl">
-              <span className="text-white font-bold text-2xl">SB</span>
-            </div>
+            <img src={logo} alt="StudyBuddy" className="h-20 mx-auto mb-6" />
 
             <h1 className="text-4xl font-bold text-white mb-2">
-              Study<span className="bg-gradient-to-r from-fuchsia-400 to-cyan-600 bg-clip-text text-transparent">Buddy</span>
+              Study<span className="text-green-500">Buddy</span>
             </h1>
 
             <p className="text-slate-300 text-lg mb-6">{loadingMessage}</p>
 
             <div className="mb-6">
-              <Spinner size="lg" color="blue" className="mx-auto" />
+              <Spinner size="lg" color="gray" className="mx-auto" />
             </div>
 
             <div className="text-slate-400 text-sm">
@@ -60,21 +59,17 @@ const Signup = () => {
         </div>
       )}
 
-      <div className="min-h-screen w-full bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-white relative overflow-hidden">
+      <div className="min-h-screen w-full bg-[#0a0a0a] text-white relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-40 -left-20 h-80 w-80 rounded-full bg-fuchsia-600/20 blur-[100px]" />
-          <div className="absolute -bottom-40 -right-20 h-96 w-96 rounded-full bg-cyan-500/20 blur-[120px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-indigo-600/10 blur-[90px]" />
+          <div className="absolute -top-40 -left-20 h-80 w-80 rounded-full bg-green-600/10 blur-[100px]" />
+          <div className="absolute -bottom-40 -right-20 h-96 w-96 rounded-full bg-gray-600/10 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-gray-600/5 blur-[90px]" />
         </div>
 
         <div className="relative mx-auto flex min-h-screen max-w-7xl items-center justify-center px-4">
           <div className="w-full max-w-md">
             <div className="mb-8 text-center">
-              <div className="mx-auto mb-4 h-14 w-14 rounded-2xl bg-gradient-to-tr from-fuchsia-500 to-cyan-400 p-[2px]">
-                <div className="h-full w-full rounded-2xl bg-neutral-950 grid place-items-center text-2xl font-semibold">
-                  SB
-                </div>
-              </div>
+              <img src={logo} alt="StudyBuddy" className="h-14 mx-auto mb-4" />
               <h1 className="text-3xl font-semibold tracking-tight">Create your account</h1>
               <p className="mt-2 text-sm text-neutral-400">Join StudyBuddy and get started</p>
             </div>
@@ -88,7 +83,7 @@ const Signup = () => {
                     placeholder="Enter your name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-xl border border-neutral-700/70 bg-neutral-950 px-4 py-3 text-sm outline-none transition focus:border-cyan-500/60 focus:ring-2 focus:ring-cyan-500/20 placeholder:text-neutral-500"
+                    className="w-full rounded-xl border border-neutral-700/70 bg-neutral-950 px-4 py-3 text-sm outline-none transition focus:border-green-500/60 focus:ring-2 focus:ring-green-500/20 placeholder:text-neutral-500"
                     required
                   />
                 </div>
@@ -100,7 +95,7 @@ const Signup = () => {
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-xl border border-neutral-700/70 bg-neutral-950 px-4 py-3 text-sm outline-none transition focus:border-fuchsia-500/60 focus:ring-2 focus:ring-fuchsia-500/20 placeholder:text-neutral-500"
+                    className="w-full rounded-xl border border-neutral-700/70 bg-neutral-950 px-4 py-3 text-sm outline-none transition focus:border-green-500/60 focus:ring-2 focus:ring-green-500/20 placeholder:text-neutral-500"
                     required
                   />
                 </div>
@@ -112,7 +107,7 @@ const Signup = () => {
                     placeholder="Enter a strong password"
                     value={form.password}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
-                    className="w-full rounded-xl border border-neutral-700/70 bg-neutral-950 px-4 py-3 text-sm outline-none transition focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/20 placeholder:text-neutral-500"
+                    className="w-full rounded-xl border border-neutral-700/70 bg-neutral-950 px-4 py-3 text-sm outline-none transition focus:border-green-500/60 focus:ring-2 focus:ring-green-500/20 placeholder:text-neutral-500"
                     required
                   />
                 </div>
@@ -124,16 +119,15 @@ const Signup = () => {
                 <button
                   disabled={loading}
                   type='submit'
-                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 px-4 py-3 text-sm font-medium text-white transition focus:outline-none disabled:cursor-not-allowed disabled:opacity-70"
+                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-green-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  <span className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_120%,rgba(255,255,255,0.25),rgba(255,255,255,0)40%),radial-gradient(circle_at_90%_-10%,rgba(255,255,255,0.25),rgba(255,255,255,0)40%)] opacity-0 transition group-hover:opacity-100" />
                   {loading ? 'Creating account…' : 'Create account'}
                 </button>
               </form>
 
               <p className="mt-6 text-center text-sm text-neutral-400">
                 Already have an account?{' '}
-                <Link to="/login" className="text-cyan-400 hover:text-cyan-300">Login</Link>
+                <Link to="/login" className="text-green-400 hover:text-green-300">Login</Link>
               </p>
             </div>
           </div>

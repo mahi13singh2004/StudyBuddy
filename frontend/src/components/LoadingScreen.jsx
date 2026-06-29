@@ -82,9 +82,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
             <div className="text-center space-y-10 px-6 max-w-2xl">
                 <div className="mb-10">
-                    <div className="w-24 h-24 mx-auto bg-gray-800 rounded-2xl flex items-center justify-center border border-gray-700">
-                        <span className="text-gray-100 font-bold text-3xl">SB</span>
-                    </div>
+                    <img src="/src/assets/logo.png" alt="StudyBuddy" className="h-24 mx-auto" />
                 </div>
 
                 <div className="w-16 h-16 mx-auto mb-8">

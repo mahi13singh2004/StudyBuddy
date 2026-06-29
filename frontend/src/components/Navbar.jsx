@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/auth.store.js';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -70,9 +71,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center py-4">
                     <Link to="/" className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-lg sm:text-xl">SB</span>
-                        </div>
+                        <img src={logo} alt="StudyBuddy" className="h-8 sm:h-10" />
                         <h1 className="text-lg sm:text-2xl font-bold text-white">StudyBuddy</h1>
                     </Link>
 
@@ -82,7 +81,7 @@ const Navbar = () => {
                                 <div className="relative z-[60]" ref={dropdownRef}>
                                     <button
                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                        className="px-3 py-2 sm:px-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-lg transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl"
+                                        className="px-3 py-2 sm:px-4 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 flex items-center space-x-2 shadow-lg hover:shadow-xl"
                                     >
                                         <span>⚡</span>
                                         <span className="hidden sm:inline">Features</span>
@@ -134,7 +133,7 @@ const Navbar = () => {
                         ) : (
                             <Link
                                 to="/login"
-                                className="px-3 py-2 sm:px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center space-x-2"
+                                className="px-3 py-2 sm:px-4 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center space-x-2"
                             >
                                 <span>🔑</span>
                                 <span className="hidden sm:inline">Login</span>
@@ -210,7 +209,7 @@ const Navbar = () => {
                             <Link
                                 to="/login"
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="block px-4 py-3 bg-blue-600 rounded-lg text-white hover:bg-blue-700 transition-colors"
+                                className="block px-4 py-3 bg-green-600 rounded-lg text-white hover:bg-green-700 transition-colors"
                             >
                                 <div className="flex items-center space-x-3">
                                     <span>🔑</span>

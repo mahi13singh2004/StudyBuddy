@@ -48,6 +48,23 @@ const StudyRoomChat = () => {
             }]);
         });
 
+        newSocket.on('room-closed', (data) => {
+            setMessages(prev => [...prev, {
+                _id: Date.now(),
+                username: 'System',
+                message: data.message,
+                isAI: false,
+                timestamp: new Date(),
+                isSystem: true
+            }]);
+
+            // Show alert and redirect after room closes
+            setTimeout(() => {
+                alert('The study room has been closed by the creator or due to inactivity.');
+                navigate('/study-rooms');
+            }, 2000);
+        });
+
         newSocket.on('user-left', (data) => {
             setMessages(prev => [...prev, {
                 _id: Date.now(),
@@ -67,6 +84,11 @@ const StudyRoomChat = () => {
         fetchRoomDetails();
 
         return () => {
+            if (newSocket && socket.roomId) {
+                // Call leave room API
+                axiosInstance.post(`/api/study-rooms/leave/${roomId}`)
+                    .catch(error => console.error('Error leaving room:', error));
+            }
             newSocket.emit('leave-room');
             newSocket.close();
         };
@@ -120,9 +142,9 @@ const StudyRoomChat = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+            <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
                     <p className="text-white">Joining study room...</p>
                 </div>
             </div>
@@ -130,7 +152,7 @@ const StudyRoomChat = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16">
+        <div className="min-h-screen bg-[#0a0a0a] pt-16">
             <div className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 px-6 py-4">
                 <div className="flex justify-between items-center">
                     <div>
@@ -138,7 +160,15 @@ const StudyRoomChat = () => {
                         <p className="text-slate-300 text-sm">Room ID: {roomId} • {participants.length} participants</p>
                     </div>
                     <button
-                        onClick={() => navigate('/study-rooms')}
+                        onClick={async () => {
+                            try {
+                                await axiosInstance.post(`/api/study-rooms/leave/${roomId}`);
+                                navigate('/study-rooms');
+                            } catch (error) {
+                                console.error('Error leaving room:', error);
+                                navigate('/study-rooms'); // Navigate anyway
+                            }
+                        }}
                         className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
                     >
                         Leave Room
@@ -178,8 +208,8 @@ const StudyRoomChat = () => {
                                 message.userId === user._id ? 'justify-end' : 'justify-start'
                                 }`}>
                                 <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${message.isSystem ? 'bg-slate-700 text-slate-300 text-sm' :
-                                    message.isAI ? 'bg-purple-900/50 border border-purple-700 text-white' :
-                                        message.userId === user._id ? 'bg-blue-600 text-white' : 'bg-slate-700 border border-slate-600 text-white'
+                                    message.isAI ? 'bg-gray-800 border border-gray-700 text-white' :
+                                        message.userId === user._id ? 'bg-green-600 text-white' : 'bg-slate-700 border border-slate-600 text-white'
                                     }`}>
                                     {!message.isSystem && (
                                         <div className="text-xs opacity-75 mb-1">
@@ -209,7 +239,7 @@ const StudyRoomChat = () => {
                             <button
                                 onClick={sendMessage}
                                 disabled={!newMessage.trim()}
-                                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 Send
                             </button>
