@@ -83,7 +83,21 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
             <div className="text-center space-y-10 px-6 max-w-2xl">
                 <div className="mb-10">
-                    <img src={logo} alt="StudyBuddy" className="h-24 mx-auto" />
+                    <img
+                        src={logo}
+                        alt="StudyBuddy"
+                        className="h-24 mx-auto"
+                        onError={(e) => {
+                            console.error('Logo failed to load:', logo);
+                            e.target.style.display = 'none';
+                        }}
+                        onLoad={() => {
+                            console.log('Logo loaded successfully');
+                        }}
+                    />
+                    <h1 className="text-4xl font-bold text-white mt-4">
+                        Study<span className="text-green-500">Buddy</span>
+                    </h1>
                 </div>
 
                 <div className="w-16 h-16 mx-auto mb-8">

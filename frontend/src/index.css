@@ -33,7 +33,9 @@ body {
 }
 
 * {
-  transition: all 0.2s ease-in-out;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
 }
 
 /* Flashcard 3D Effects */
