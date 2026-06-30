@@ -40,14 +40,14 @@ export const uploadPDF = async (req, res) => {
 
       extractedText = allText.trim();
 
-     
+
 
       if (!extractedText || extractedText.trim().length === 0) {
         console.warn("PDF text is empty or contains only whitespace");
         extractedText =
           "PDF appears to be empty or contains no extractable text.";
       } else {
-        
+
       }
     } catch (extractError) {
       console.error("Error extracting PDF text:", extractError);
@@ -65,6 +65,14 @@ export const uploadPDF = async (req, res) => {
       fileUrl: `/uploads/${filename}`,
       textContent: extractedText,
     });
+
+    // Initialize vector store for semantic search
+    try {
+      await ChatUtil.initializePDFVectorStore(pdfDoc._id.toString(), extractedText);
+    } catch (vectorError) {
+      console.error("Vector store initialization failed:", vectorError);
+      // Continue anyway - will fall back to full text search
+    }
 
     res.json({
       success: true,
@@ -109,7 +117,7 @@ export const chatWithPDF = async (req, res) => {
     if (
       !pdf.textContent ||
       pdf.textContent ===
-        "Error extracting text from PDF. Please try uploading again."
+      "Error extracting text from PDF. Please try uploading again."
     ) {
       return res.status(400).json({
         message:

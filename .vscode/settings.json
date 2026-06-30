@@ -1,1 +1,8 @@
-{}
+{
+    "workbench.editorAssociations": [
+        {
+            "viewType": "domViewer.editor",
+            "filenamePattern": "*.dom"
+        }
+    ]
+}
