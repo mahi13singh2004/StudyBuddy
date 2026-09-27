@@ -109,23 +109,19 @@ export const leaveRoom = async (req, res) => {
             return res.status(404).json({ error: "Room not found or inactive" });
         }
 
-        // Remove user from participants
         const originalParticipantCount = room.participants.length;
         room.participants = room.participants.filter(
             p => p.userId.toString() !== userId.toString()
         );
 
-        // Check if user was actually in the room
         if (room.participants.length === originalParticipantCount) {
             return res.status(400).json({ error: "User was not in the room" });
         }
 
-        // Check if room creator left or room is empty
         const isCreator = room.createdBy.toString() === userId.toString();
         const isEmpty = room.participants.length === 0;
 
         if (isCreator || isEmpty) {
-            // Deactivate room if creator leaves or room is empty
             room.isActive = false;
             await room.save();
 
@@ -135,7 +131,6 @@ export const leaveRoom = async (req, res) => {
                 roomClosed: true
             });
         } else {
-            // Just save the updated participants list
             await room.save();
 
             res.status(200).json({
@@ -201,12 +196,10 @@ export const getActiveRooms = async (req, res) => {
     }
 };
 
-// Cleanup function to remove old inactive rooms (runs every hour)
 const cleanupInactiveRooms = async () => {
     try {
         const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
         
-        // Remove rooms that have been inactive for more than 24 hours
         const result = await StudyRoom.deleteMany({
             isActive: false,
             updatedAt: { $lt: oneDayAgo }
@@ -220,5 +213,4 @@ const cleanupInactiveRooms = async () => {
     }
 };
 
-// Run cleanup every hour
 setInterval(cleanupInactiveRooms, 60 * 60 * 1000);

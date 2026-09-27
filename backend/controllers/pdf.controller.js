@@ -66,12 +66,10 @@ export const uploadPDF = async (req, res) => {
       textContent: extractedText,
     });
 
-    // Initialize vector store for semantic search
     try {
       await ChatUtil.initializePDFVectorStore(pdfDoc._id.toString(), extractedText);
     } catch (vectorError) {
       console.error("Vector store initialization failed:", vectorError);
-      // Continue anyway - will fall back to full text search
     }
 
     res.json({

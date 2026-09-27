@@ -2,30 +2,27 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "models/gemini-3.1-flash-lite" });
+const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || "models/gemini-3.1-flash-lite" });
 
 const chatHistories = new Map();
-const vectorStores = new Map(); // Store text chunks per PDF (simple approach)
+const vectorStores = new Map();
 
 const ChatUtil = {
-  // Simple text chunking without vector embeddings (to avoid dependency issues)
   initializePDFVectorStore: async (pdfId, pdfText) => {
     try {
-      // Check if already initialized
       if (vectorStores.has(pdfId)) {
         return;
       }
 
-      // STEP 1: Split text into chunks using LangChain
       const textSplitter = new RecursiveCharacterTextSplitter({
-        chunkSize: 1000, // Characters per chunk
-        chunkOverlap: 200, // Overlap for context continuity
+        chunkSize: 1000,
+        chunkOverlap: 200,
       });
 
       const docs = await textSplitter.createDocuments([pdfText]);
       const chunks = docs.map(doc => doc.pageContent);
 
-      // STEP 2: Store chunks (simple text search instead of vector search)
+
       vectorStores.set(pdfId, chunks);
       console.log(`✅ Text chunks created for PDF ${pdfId}: ${chunks.length} chunks`);
     } catch (error) {
@@ -40,16 +37,13 @@ const ChatUtil = {
       let chatHistory = chatHistories.get(chatKey) || [];
       chatHistory.push({ role: "user", content: userMessage });
 
-      // STEP 3: Get relevant chunks using simple keyword matching
-      let contextText = pdfText; // Fallback to full text
-
+      let contextText = pdfText;
       if (!vectorStores.has(pdfId)) {
         await ChatUtil.initializePDFVectorStore(pdfId, pdfText);
       }
 
       const chunks = vectorStores.get(pdfId);
       if (chunks && chunks.length > 0) {
-        // Simple relevance scoring based on keyword overlap
         const queryWords = userMessage.toLowerCase().split(' ').filter(word => word.length > 3);
 
         const scoredChunks = chunks.map(chunk => {
@@ -60,7 +54,6 @@ const ChatUtil = {
           return { chunk, score };
         });
 
-        // Get top 3 most relevant chunks
         const relevantChunks = scoredChunks
           .sort((a, b) => b.score - a.score)
           .slice(0, 3)
@@ -72,7 +65,6 @@ const ChatUtil = {
         }
       }
 
-      // STEP 4: Build context-aware prompt
       const recentHistory = chatHistory.slice(-4).map(msg =>
         `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`
       ).join('\n');

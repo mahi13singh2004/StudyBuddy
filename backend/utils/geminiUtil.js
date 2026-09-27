@@ -7,7 +7,7 @@ if (!process.env.GEMINI_API_KEY) {
 }
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "models/gemini-3.1-flash-lite" });
+const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || "models/gemini-3.1-flash-lite" });
 
 function buildPrompt(action, content) {
   switch (action) {

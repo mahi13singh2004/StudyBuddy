@@ -28,9 +28,13 @@ if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
 }
 
+const allowedOrigins = process.env.NODE_ENV === "production"
+  ? ["https://studybuddy-frontend-9meh.onrender.com"]
+  : ["http://localhost:5173", "http://localhost:5174"];
+
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com"],
+    origin: allowedOrigins,
     credentials: true,
   }
 });
@@ -38,7 +42,7 @@ const io = new Server(server, {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: ["http://localhost:5173", "https://studybuddy-frontend-9meh.onrender.com"],
+  origin: allowedOrigins,
   credentials: true
 }));
 

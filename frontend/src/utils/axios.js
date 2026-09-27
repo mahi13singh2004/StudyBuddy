@@ -1,7 +1,11 @@
 import axios from "axios"
 
+const apiURL = import.meta.env.MODE === "production"
+    ? "https://studybuddy-bz2d.onrender.com"
+    : "http://localhost:5000";
+
 const axiosInstance = axios.create({
-    baseURL: "https://studybuddy-bz2d.onrender.com",
+    baseURL: apiURL,
     withCredentials: true,
 })
 
