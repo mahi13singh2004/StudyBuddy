@@ -21,7 +21,11 @@ const StudyRoomChat = () => {
             return;
         }
 
-        const newSocket = io('https://studybuddy-bz2d.onrender.com', {
+        const socketURL = import.meta.env.MODE === "production"
+            ? "https://studybuddy-bz2d.onrender.com"
+            : "http://localhost:5000";
+
+        const newSocket = io(socketURL, {
             withCredentials: true
         });
 
@@ -84,13 +88,13 @@ const StudyRoomChat = () => {
         fetchRoomDetails();
 
         return () => {
-            if (newSocket && socket.roomId) {
+            if (newSocket) {
                 // Call leave room API
                 axiosInstance.post(`/api/study-rooms/leave/${roomId}`)
                     .catch(error => console.error('Error leaving room:', error));
+                newSocket.emit('leave-room');
+                newSocket.close();
             }
-            newSocket.emit('leave-room');
-            newSocket.close();
         };
     }, [roomId, user]);
 

@@ -26,10 +26,11 @@ const Signup = () => {
       })
       if (res) {
         setLoadingMessage("Welcome! Redirecting to your dashboard...");
+        // Ensure loading screen is visible for at least 800ms
         setTimeout(() => {
           navigate("/")
           setTimeout(() => stopLoading(), 100);
-        }, 500);
+        }, 800);
       }
     } catch (error) {
       console.error("Signup failed:", error);
